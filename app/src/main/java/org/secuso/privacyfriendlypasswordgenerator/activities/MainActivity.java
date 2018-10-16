@@ -37,7 +37,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 
+import com.android.volley.toolbox.Volley;
+
 import org.secuso.privacyfriendlypasswordgenerator.R;
+import org.secuso.privacyfriendlypasswordgenerator.benchmark.PasswordGeneratorBenchmark;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
@@ -51,6 +54,13 @@ import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.ufpe.cin.dashbench.api.IBenchmarkRunner;
+import br.ufpe.cin.dashbench.api.VolleyQueue;
+import br.ufpe.cin.dashbench.configuration.BenchmarkConfiguration;
+import br.ufpe.cin.dashbench.configuration.Configurer;
+import br.ufpe.cin.dashbench.configuration.IpAddress;
+import br.ufpe.cin.dashbench.runners.DefaultBenchmarkRunner;
 
 /**
  * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
@@ -213,6 +223,17 @@ public class MainActivity extends BaseActivity {
         }
 
         overridePendingTransition(0, 0);
+
+        /*String benchmark = getIntent().getStringExtra("param");
+        if((benchmark!=null) && !benchmark.isEmpty()) {
+            VolleyQueue.getInstance().setRequestQueue(Volley.newRequestQueue(this));
+            IpAddress.setEndpointAddress(getIntent());
+            BenchmarkConfiguration.getInstance().setIterations(getIntent());
+            IBenchmarkRunner benchmarkRunner = new DefaultBenchmarkRunner();
+            benchmarkRunner.run(new PasswordGeneratorBenchmark());
+        }*/
+        //uncomment the block above and comment the line below if the benchmark doesn't work
+        Configurer.getInstance().configureAndRun(getIntent(),this, new PasswordGeneratorBenchmark());
     }
 
     public void deleteItem(int position) {

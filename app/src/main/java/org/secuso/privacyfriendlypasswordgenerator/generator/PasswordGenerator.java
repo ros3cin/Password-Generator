@@ -17,6 +17,8 @@
 
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
+import org.eclipse.collections.impl.list.mutable.FastList;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
