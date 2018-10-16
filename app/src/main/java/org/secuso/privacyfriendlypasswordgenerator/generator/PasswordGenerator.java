@@ -22,6 +22,7 @@ import org.eclipse.collections.impl.list.mutable.FastList;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.collections4.list.TreeList;
 
 /**
  * This class handles the hashing and the creation of passwords. Please initialize first.
@@ -89,7 +90,7 @@ public class PasswordGenerator {
         String characters = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
         String numbersInitial = "0123456789";
 
-        List<String> characterSet = new ArrayList<>();
+        List<String> characterSet = new TreeList<>();
 
         if (specialCharacters == 1) {
             for (int i = 0; i < characters.length(); i++) {
@@ -116,22 +117,22 @@ public class PasswordGenerator {
             }
         }
 
-        List<String> digitsSet = new ArrayList<>();
+        List<String> digitsSet = new TreeList<>();
         for (int i = 0; i < numbersInitial.length(); i++) {
             digitsSet.add(Character.toString(numbersInitial.charAt(i)));
         }
 
-        List<String> lowerSet = new ArrayList<>();
+        List<String> lowerSet = new TreeList<>();
         for (int i = 0; i < lowerInitial.length(); i++) {
             lowerSet.add(Character.toString(lowerInitial.charAt(i)));
         }
 
-        List<String> upperSet = new ArrayList<>();
+        List<String> upperSet = new TreeList<>();
         for (int i = 0; i < upperInitals.length(); i++) {
             upperSet.add(Character.toString(upperInitals.charAt(i)));
         }
 
-        List<String> extraSet = new ArrayList<>();
+        List<String> extraSet = new TreeList<>();
         for (int i = 0; i < characters.length(); i++) {
             extraSet.add(Character.toString(characters.charAt(i)));
         }
