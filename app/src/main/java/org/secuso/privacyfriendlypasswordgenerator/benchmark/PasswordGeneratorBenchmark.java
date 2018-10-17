@@ -19,15 +19,13 @@ public class PasswordGeneratorBenchmark implements IBenchmark {
                 "username",
                 "masterpassword_masterpassword_masterpassword_",
                 "deviceid",
-                BenchmarkConfiguration.getInstance().getNumberOfWarmUpIterations(),
-                BenchmarkConfiguration.getInstance().getNumberOfWarmUpIterations(),
+                1,
+                1,
                 "SHA256");
-        String password = generator.getPassword(
-                1,
-                1,
-                1,
-                1,
-                BenchmarkConfiguration.getInstance().getNumberOfWarmUpIterations());
+        int count = BenchmarkConfiguration.getInstance().getNumberOfWarmUpIterations();
+        while(count-- > 0) {
+            generator.getPassword(1,1,1,1,1);
+        }
     }
 
     @Override
@@ -36,15 +34,13 @@ public class PasswordGeneratorBenchmark implements IBenchmark {
                 "username",
                 "masterpassword_masterpassword_masterpassword_",
                 "deviceid",
-                BenchmarkConfiguration.getInstance().getNumberOfIterations(),
-                BenchmarkConfiguration.getInstance().getNumberOfIterations(),
+                1,
+                1,
                 "SHA256");
-        String password = generator.getPassword(
-                1,
-                1,
-                1,
-                1,
-                BenchmarkConfiguration.getInstance().getNumberOfIterations());
+        int count = BenchmarkConfiguration.getInstance().getNumberOfIterations();
+        while(count-- > 0) {
+            generator.getPassword(1,1,1,1,1);
+        }
         (new DefaultBenchmarkEndedCallback()).execute();
     }
 }
